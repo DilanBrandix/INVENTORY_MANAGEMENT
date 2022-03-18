@@ -1,0 +1,65 @@
+.navbar{
+  justify-content: space-between;
+  font-size: 15px;
+  width: 100%;
+
+}
+
+
+@media only screen and (max-width: 600px ){
+.navbar{
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 40%;
+}
+.span1{
+  position: absolute;
+  padding-top: 10%;
+  margin-left: -10%;
+}
+.span2{
+  position: absolute;
+  padding-top: 25%;
+  margin-top: 20%;
+  margin-left: -10%;
+}
+.span3{
+  position: absolute;
+  padding-top: 30%;
+  margin-top: 50%;
+  margin-left: -10%;
+}
+.span4{
+  position: absolute;
+  padding-top: 50%;
+  margin-top: 65%;
+  margin-left: -10%;
+}
+.span5{
+  position: absolute;
+  padding-top: 70%;
+  margin-top: 80%;
+  margin-left: -10%;
+
+}
+
+.span7{
+  position: absolute;
+  padding-top: 85%;
+  margin-top: 95%;
+  margin-left: -10%;
+
+}
+.example-button-row button,
+.example-button-row a {
+  position: absolute;
+
+}
+
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}

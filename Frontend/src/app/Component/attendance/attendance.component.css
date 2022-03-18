@@ -1,0 +1,53 @@
+table{
+  width: 100%;
+
+}
+mat-row, mat-header-row, mat-footer-row,  td.mat-cell, td.mat-footer-cell {
+  border-bottom-color: rgba(0,0,0,.12);
+  width: 10%;
+  text-align: center;
+
+
+}
+
+th.mat-header-cell{
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+}
+
+.mat-card-title {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  padding: 30px;
+}
+.button_update{
+  width: 120px;
+  height: 3.2rem;
+  margin-bottom: 14%;
+
+}
+.radio{
+  margin-left: 40%;
+
+}
+
+.date{
+  padding-bottom: 0%;
+  margin-left: 2%;
+  width: 150px;
+
+}
+.input_field{
+  width: 100px;
+  text-align: center;
+}
+.search{
+  width:25%
+}
+
+.input_field1{
+  width: 120px;
+
+}

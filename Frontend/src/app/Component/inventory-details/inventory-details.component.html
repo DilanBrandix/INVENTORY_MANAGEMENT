@@ -1,0 +1,72 @@
+<app-header></app-header>
+<mat-card class="card">
+
+  <mat-card-title class="title">Inventory Details</mat-card-title>
+
+  <button mat-raised-button color="primary" class="button">Generate Report</button>
+
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>Enter EPF No</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="32583" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- <ng-container matColumnDef="section">
+      <th *matHeaderCellDef  colspan="7" class="head"> Bundling </th>
+      <td mat-cell *matCellDef="let element"> {{element.section}} </td>
+    </ng-container> -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="toolNo">
+      <th mat-header-cell *matHeaderCellDef> Tool No </th>
+      <td mat-cell *matCellDef="let element"> {{element.toolNo}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="toolName">
+      <th mat-header-cell *matHeaderCellDef> Tool Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.toolName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="epfNo">
+      <th mat-header-cell *matHeaderCellDef> EPF No </th>
+      <td mat-cell *matCellDef="let element"> {{element.epfNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empName" >
+      <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.empName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="section" >
+      <th mat-header-cell *matHeaderCellDef> Section </th>
+      <td mat-cell *matCellDef="let element"> {{element.section}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date" >
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="button" >
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" class="button_update" routerLink="/update_inventory">{{element.button}}</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+
+</mat-card>
