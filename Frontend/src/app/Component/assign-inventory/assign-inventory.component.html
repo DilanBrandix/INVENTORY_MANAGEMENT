@@ -1,44 +1,46 @@
 <app-header></app-header>
 <mat-card class="card">
   <h1 class="mat-display-1 title">Assign Inventory</h1>
-    <form class="example-form">
+    <form class="example-form" [formGroup]="inventoryForm" >
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>EPF No</mat-label>
-        <input matInput placeholder="EPF No">
+        <input formControlName = "epfNumber" matInput placeholder="EPF No"  id="epf">
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool Name</mat-label>
-        <mat-select>
-          <mat-option value="one">Scissor</mat-option>
-          <mat-option value="two">Trimmer</mat-option>
+        <mat-select formControlName = "toolName">
+          <mat-option value="Scissor">Scissor</mat-option>
+          <mat-option value="Trimmer">Trimmer</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Employee Name</mat-label>
-        <input matInput placeholder="Employee Name">
+        <input  formControlName = "employeeName" matInput placeholder="Employee Name"   id="empname">
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool No</mat-label>
-        <input matInput placeholder="Tool No">
+        <input formControlName = "toolNumber" matInput placeholder="Tool No">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Section</mat-label>
-        <mat-select>
-          <mat-option value="one">Bundling</mat-option>
-          <mat-option value="two">Lace</mat-option>
+        <mat-select formControlName = "section" >
+          <mat-option value="Bundling">Bundling</mat-option>
+          <mat-option value="Lace">Lace</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input formControlName = "date" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
     </form>
-  <button mat-raised-button color="primary" class="button" routerLink="/inventory_details">Assign Inventory</button>
+  <button mat-raised-button color="primary" class="button" routerLink="/inventory_details"
+  (click)="addInventory()"
+  >Assign Inventory</button>
 </mat-card>
 
 

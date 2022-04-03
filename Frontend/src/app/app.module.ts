@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
@@ -13,6 +13,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { LoginComponent } from './Component/login/login.component';
 import { AttendanceComponent } from './Component/attendance/attendance.component';
 import { UpdateAssignedInventoryComponent } from './Component/update-assigned-inventory/update-assigned-inventory.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,7 +33,11 @@ import { UpdateAssignedInventoryComponent } from './Component/update-assigned-in
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],
