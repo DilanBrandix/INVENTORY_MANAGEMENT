@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('inventory_details')
 export class FeedPostEntity {
-  @PrimaryColumn({ default: '' })
+  @PrimaryGeneratedColumn()
   no: number;
 
   @Column({ default: '' })

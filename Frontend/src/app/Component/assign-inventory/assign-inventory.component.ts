@@ -15,25 +15,27 @@ export class AssignInventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventoryForm = this.formBuilder.group({
-      epfNumber : ['',Validators.required],
-      employeeName : ['',Validators.required],
+      epf_No : ['',Validators.required],
+      employee_Name : ['',Validators.required],
       section : ['',Validators.required],
-      toolName : ['',Validators.required],
-      toolNumber : ['',Validators.required],
-      date : ['',Validators.required]
+      tool_Name : ['',Validators.required],
+      tool_No : ['',Validators.required],
+      assign_date : ['',Validators.required]
 
     })
   }
 
   addInventory(){
+
     if(this.inventoryForm.valid){
+      console.log(this.inventoryForm.value)
       this.api.postInventory(this.inventoryForm.value)
       .subscribe({
         next:(res)=>{
           alert("Product added successfully")
         },
-        error:(res)=>{
-          console.log(res)
+        error:()=>{
+          alert("Error")
 
         }
 

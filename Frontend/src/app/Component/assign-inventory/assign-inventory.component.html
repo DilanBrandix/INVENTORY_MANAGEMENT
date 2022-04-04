@@ -4,11 +4,11 @@
     <form class="example-form" [formGroup]="inventoryForm" >
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>EPF No</mat-label>
-        <input formControlName = "epfNumber" matInput placeholder="EPF No"  id="epf">
+        <input formControlName = "epf_No" matInput placeholder="EPF No" >
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool Name</mat-label>
-        <mat-select formControlName = "toolName">
+        <mat-select formControlName = "tool_Name">
           <mat-option value="Scissor">Scissor</mat-option>
           <mat-option value="Trimmer">Trimmer</mat-option>
         </mat-select>
@@ -16,11 +16,11 @@
       <br>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Employee Name</mat-label>
-        <input  formControlName = "employeeName" matInput placeholder="Employee Name"   id="empname">
+        <input  formControlName = "employee_Name" matInput placeholder="Employee Name" >
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool No</mat-label>
-        <input formControlName = "toolNumber" matInput placeholder="Tool No">
+        <input formControlName = "tool_No" matInput placeholder="Tool No">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="input_field">
@@ -32,7 +32,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Choose a date</mat-label>
-        <input formControlName = "date" matInput [matDatepicker]="picker">
+        <input formControlName = "assign_date" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

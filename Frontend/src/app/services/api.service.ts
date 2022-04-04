@@ -9,10 +9,10 @@ export class ApiService {
   constructor(private http : HttpClient) { }
 
   postInventory(data : any){
-    return this.http.post<any>("http://localhost:3000/Backend/feed/",data);
+    return this.http.post<any>("http://localhost:3000/Backend/feed",data);
   }
 
   getInventory(){
-    return this.http.get<any>("http://localhost:3000/Backend/feed/");
+    return this.http.get<any>("http://localhost:3000/Backend/feed");
   }
 }

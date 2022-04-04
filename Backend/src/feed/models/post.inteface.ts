@@ -1,5 +1,5 @@
 export interface FeedPost {
-  no?: any;
+  no?: number;
   tool_No?: any;
   tool_Name?: any;
   epf_No?: any;
