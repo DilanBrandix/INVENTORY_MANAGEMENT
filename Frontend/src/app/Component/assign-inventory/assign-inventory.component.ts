@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
+import { InventoryDetailsComponent } from '../inventory-details/inventory-details.component';
 
 @Component({
   selector: 'app-assign-inventory',
@@ -10,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class AssignInventoryComponent implements OnInit {
 
   inventoryForm ! : FormGroup;
+  static this  : any;
 
   constructor(private formBuilder : FormBuilder, private api : ApiService) { }
 
@@ -23,7 +25,10 @@ export class AssignInventoryComponent implements OnInit {
       assign_date : ['',Validators.required]
 
     })
+
+
   }
+
 
   addInventory(){
 
@@ -44,7 +49,9 @@ export class AssignInventoryComponent implements OnInit {
     }
 
 
+
  }
+
 
 }
 
