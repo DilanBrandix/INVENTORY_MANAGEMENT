@@ -1,24 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-
-interface Attendance {
-  toolNo: string;
-  toolName: string;
-  epfNo: string;
-  empName: string;
-  section: string;
-  date: any;
-  inOut: any;
-  shift:any;
-  mark:any;
-
-}
-
-const ATTENDANCE: Attendance[] = [
-  { toolNo: 'BSC - 01', toolName: 'Scissor', epfNo: '31582', empName:'Dilan Perera', section:'Bundling',date:'',inOut:'',shift:'',mark:'Mark'},
-  { toolNo: 'BSC - 02', toolName: 'Scissor', epfNo: '31583', empName:'Maleesha Withanage',section:'Bundling',date:'',inOut:'',shift:'',mark:'Mark' },
-  { toolNo: 'BSC - 03', toolName: 'Scissor', epfNo: '31584', empName:'Nishie Fernando',section:'Bundling',date:'',inOut:'',shift:'',mark:'Mark' },
-]
+import { ApiService } from 'src/app/services/api.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-attendance',
@@ -27,9 +10,13 @@ const ATTENDANCE: Attendance[] = [
 })
 export class AttendanceComponent implements OnInit {
 
+  attendanceForm ! : FormGroup;
 
-  displayedColumns: string[] = [ 'toolNo', 'toolName','section', 'epfNo','empName','date','inOut','shift','mark'];
-  dataSource = new MatTableDataSource(ATTENDANCE);
+
+
+  displayedColumns: string[] = [ 'tool_No', 'tool_Name','section', 'epf_No','employee_Name','date','inv_in','shift','mark'];
+  dataSource!: MatTableDataSource<any>;
+  static this: any;
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -37,9 +24,53 @@ export class AttendanceComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(private api : ApiService, private formBuilder : FormBuilder,) { }
 
   ngOnInit(): void {
+    this.attendanceForm= this.formBuilder.group({
+      epf_No : ['',Validators.required],
+      employee_Name : ['',Validators.required],
+      section : ['',Validators.required],
+      tool_Name : ['',Validators.required],
+      tool_No : ['',Validators.required],
+      date : ['',Validators.required],
+      inv_in : ['',Validators.required],
+      shift : ['',Validators.required],
+    })
+    this.getAllInventory();
   }
 
+  getAllInventory(){
+    this.api.getInventory()
+    .subscribe({
+      next:(res)=>{
+        this.dataSource = new MatTableDataSource(res);
+
+      },
+      error:(err)=>{
+        console.log(err);
+
+      }
+    })
+
+  }
+  addAttendance(){
+
+    if(this.attendanceForm.valid){
+      console.log(this.attendanceForm.value)
+      this.api.postAttendance(this.attendanceForm.value)
+      .subscribe({
+        next:(res)=>{
+          // alert("Product added successfully")
+          console.log(res)
+        },
+        error:(res)=>{
+          console.log(res)
+
+        }
+
+      })
+
+    }
+ }
 }

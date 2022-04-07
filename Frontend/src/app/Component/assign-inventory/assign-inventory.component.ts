@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-import { InventoryDetailsComponent } from '../inventory-details/inventory-details.component';
+
 
 @Component({
   selector: 'app-assign-inventory',
@@ -47,9 +47,6 @@ export class AssignInventoryComponent implements OnInit {
       })
 
     }
-
-
-
  }
 
 

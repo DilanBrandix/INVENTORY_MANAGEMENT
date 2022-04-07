@@ -17,11 +17,13 @@ export class FeedController {
     return this.feedService.findAllPost();
   }
 
-  @Put(':no')
-  update(
-    @Param('no') no: number,
-    @Body() feedPost: FeedPost,
-  ): Observable<UpdateResult> {
-    return this.feedService.updatePost(no, feedPost);
+  @Get('inventory/:id')
+  getSpecific(@Param('id') id: number): Promise<any> {
+    return this.feedService.getSpecific(id);
+  }
+
+  @Put()
+  update(@Body() feedPost: FeedPost): Promise<any> {
+    return this.feedService.updatePost(feedPost);
   }
 }

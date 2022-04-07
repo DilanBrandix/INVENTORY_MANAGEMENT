@@ -1,44 +1,46 @@
 <app-header></app-header>
 <mat-card class="card">
   <h1 class="mat-display-1 title">Update Assigned Inventory</h1>
-    <form class="example-form">
+    <form class="example-form" [formGroup]="inventoryForm">
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>EPF No</mat-label>
-        <input matInput placeholder="EPF No" value="31582">
+        <input matInput placeholder="EPF No" formControlName="epf_No" value="{{this.inventoryForm.value.epf_No}}" >
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool Name</mat-label>
-        <mat-select >
-          <mat-option value="one">Scissor</mat-option>
-          <mat-option value="two">Trimmer</mat-option>
+        <mat-select formControlName="tool_Name" value="{{this.inventoryForm.value.tool_Name}}">
+          <mat-option value="Scissor">Scissor</mat-option>
+          <mat-option value="Trimmer">Trimmer</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Employee Name</mat-label>
-        <input matInput placeholder="Employee Name" value="Dilan Perera">
+        <input matInput placeholder="Employee Name" formControlName="employee_Name" value="{{this.inventoryForm.value.employee_Name}}">
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Tool No</mat-label>
-        <input matInput placeholder="Tool No" value="BSC - 01">
+        <input matInput placeholder="Tool No" formControlName="tool_No" value="{{this.inventoryForm.value.tool_No}}">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Section</mat-label>
-        <mat-select>
-          <mat-option value="one">Bundling</mat-option>
-          <mat-option value="two">Lace</mat-option>
+        <mat-select formControlName="section" value="{{this.inventoryForm.value.section}}">
+          <mat-option value="Bundling">Bundling</mat-option>
+          <mat-option value="Lace">Lace</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="input_field">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker"  value="03/04/2022">
+        <input matInput [matDatepicker]="picker" formControlName="assign_date" >
+        <!-- value="{{this.inventoryForm.value.assign_date}}" -->
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
     </form>
-  <button mat-raised-button color="primary" class="button" routerLink="/inventory_details">Update</button>
+  <button mat-raised-button color="primary" class="button"
+  (click)="updateInventory()">Update</button>
 </mat-card>
 
 

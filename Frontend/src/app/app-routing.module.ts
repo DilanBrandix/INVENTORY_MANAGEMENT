@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'inventory_out', component:InventoryOutTimeComponent},
   {path: 'inventory_assign', component:AssignInventoryComponent},
   {path:'attendance',component:AttendanceComponent},
-  {path:'update_inventory',component:UpdateAssignedInventoryComponent}
+  {path:'update_inventory/:id',component:UpdateAssignedInventoryComponent}
 
 ];
 

@@ -15,11 +15,15 @@ export class FeedService {
     return from(this.feedPostRepository.save(feedPost));
   }
 
+  getSpecific(id: number): Promise<any> {
+    return this.feedPostRepository.findOne(id);
+  }
+
   findAllPost(): Observable<FeedPost[]> {
     return from(this.feedPostRepository.find());
   }
 
-  updatePost(no: number, feedPost: FeedPost): Observable<UpdateResult> {
-    return from(this.feedPostRepository.update(no, feedPost));
+  updatePost(feedPost: FeedPost): Promise<any> {
+    return this.feedPostRepository.save(feedPost);
   }
 }
