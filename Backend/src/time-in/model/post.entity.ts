@@ -1,18 +1,12 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('inventory_in_time')
 export class TimeInPostEntity {
-  @PrimaryColumn({ default: '' })
+  @PrimaryGeneratedColumn()
   no: number;
 
   @PrimaryColumn({ default: '' })
   tool_No: string;
-
-  @Column({ default: '' })
-  tool_Name: string;
-
-  @Column({ default: '' })
-  section: string;
 
   @Column({ default: '' })
   epf_No: string;

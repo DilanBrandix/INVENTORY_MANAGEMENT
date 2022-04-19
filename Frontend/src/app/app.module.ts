@@ -14,6 +14,8 @@ import { LoginComponent } from './Component/login/login.component';
 import { AttendanceComponent } from './Component/attendance/attendance.component';
 import { UpdateAssignedInventoryComponent } from './Component/update-assigned-inventory/update-assigned-inventory.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateAttendanceComponent } from './Component/update-attendance/update-attendance.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     InventoryOutTimeComponent,
     LoginComponent,
     AttendanceComponent,
-    UpdateAssignedInventoryComponent
+    UpdateAssignedInventoryComponent,
+    UpdateAttendanceComponent
 
   ],
   imports: [
@@ -37,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
 
   ],
   providers: [],

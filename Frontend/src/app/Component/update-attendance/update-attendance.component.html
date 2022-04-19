@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Mark Attendance</h1>
+<div mat-dialog-content>
+  <form class="example-form" [formGroup]="attendanceForm" >
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tool No</mat-label>
+      <input formControlName = "tool_No" matInput placeholder="Tool No" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>EPF No</mat-label>
+      <input formControlName = "epf_No" matInput placeholder="EPF No" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input_field">
+      <mat-label>Employee Name</mat-label>
+      <input  formControlName = "employee_Name" matInput placeholder="Employee Name" >
+    </mat-form-field>
+
+    <mat-form-field class="date" appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName = "date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>In/Out</mat-label>
+      <mat-select formControlName = "inv_in">
+        <mat-option value="In">In</mat-option>
+        <mat-option value="Out">Out</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shift</mat-label>
+      <mat-select formControlName = "shift">
+        <mat-option value="General">General</mat-option>
+        <mat-option value="Shift A">Shift A</mat-option>
+        <mat-option value="Shift B">Shift B</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+
+</div>
+
+<div mat-dialog-action [align]="'begin'">
+  <button mat-raised-button color="primary" (click)="addattendance()">Save</button>
+  <button mat-raised-button color="warn" class="button" mat-dialog-close>Close</button>
+</div>

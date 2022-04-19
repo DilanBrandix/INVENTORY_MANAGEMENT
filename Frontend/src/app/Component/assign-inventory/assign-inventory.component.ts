@@ -37,7 +37,7 @@ export class AssignInventoryComponent implements OnInit {
       this.api.postInventory(this.inventoryForm.value)
       .subscribe({
         next:(res)=>{
-          alert("Product added successfully")
+          alert("Inventory added successfully")
         },
         error:()=>{
           alert("Error")

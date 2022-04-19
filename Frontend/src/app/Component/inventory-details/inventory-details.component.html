@@ -10,7 +10,8 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="32583" #input>
   </mat-form-field>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort >
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -20,40 +21,40 @@
     </ng-container> -->
     <!-- Position Column -->
     <ng-container matColumnDef="no">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
       <td mat-cell *matCellDef="let element"> {{element.no}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="tool_No">
-      <th mat-header-cell *matHeaderCellDef> Tool No </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tool No </th>
       <td mat-cell *matCellDef="let element"> {{element.tool_No}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="tool_Name">
-      <th mat-header-cell *matHeaderCellDef> Tool Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tool Name </th>
       <td mat-cell *matCellDef="let element"> {{element.tool_Name}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="epf_No">
-      <th mat-header-cell *matHeaderCellDef> EPF No </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> EPF No </th>
       <td mat-cell *matCellDef="let element"> {{element.epf_No}} </td>
     </ng-container>
 
     <ng-container matColumnDef="employee_Name" >
-      <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </th>
       <td mat-cell *matCellDef="let element"> {{element.employee_Name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="section" >
-      <th mat-header-cell *matHeaderCellDef> Section </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Section </th>
       <td mat-cell *matCellDef="let element"> {{element.section}} </td>
     </ng-container>
 
     <ng-container matColumnDef="assign_date" >
-      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
       <td mat-cell *matCellDef="let element"> {{element.assign_date | date}} </td>
     </ng-container>
 
@@ -67,7 +68,15 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
   </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+</div>
 
 
 
