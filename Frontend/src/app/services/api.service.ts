@@ -30,7 +30,7 @@ export class ApiService {
   putInventory(data : any){
     return this.http.put<any>(`${this.apiUrl}/feed`,data);
   }
-  getattendance(){
-    return this.http.get<any>(`${this.apiUrl}/time-in`);
+  getattendance(userRole:any){
+    return this.http.get<any>(`${this.apiUrl}/time-in/${userRole}`);
   }
 }

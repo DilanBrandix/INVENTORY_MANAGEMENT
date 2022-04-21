@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { TimeInPost } from 'src/time-in/model/post.interface';
 import { TimeInService } from 'src/time-in/services/time-in/time-in.service';
@@ -11,8 +11,8 @@ export class TimeInController {
   create(@Body() post: TimeInPost): Observable<TimeInPost> {
     return this.timeinService.createPost(post);
   }
-  @Get()
-  findAll(): Observable<TimeInPost[]> {
-    return this.timeinService.findAllPost();
+  @Get('/:userRole')
+  findAll(@Param('userRole') userRole: string): Observable<TimeInPost[]> {
+    return this.timeinService.findAllPost(userRole);
   }
 }

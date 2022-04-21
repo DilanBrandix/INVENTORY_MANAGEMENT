@@ -3,6 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
+import { UserDetailsService } from 'src/app/services/user-details.service';
 
 
 
@@ -40,7 +41,10 @@ export class InventoryInTimeComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private api: ApiService,) {
+  constructor(
+    private api: ApiService,
+    private userDetails: UserDetailsService
+    ) {
     this.shift = this.displayedRows[this.shift]
   }
 
@@ -58,8 +62,9 @@ export class InventoryInTimeComponent implements OnInit {
     this.getAllAttendance();
 
   }
-  getAllAttendance() {
-    this.api.getattendance().subscribe({
+  async getAllAttendance() {
+    const userRole = await this.userDetails.getUserRole()
+    this.api.getattendance(userRole).subscribe({
       next: (res) => {
 
         this.dataSource = new MatTableDataSource(res);
