@@ -1,4 +1,3 @@
-<app-header></app-header>
 <mat-card>
 <mat-card-title>Inventory Attendance</mat-card-title>
 
@@ -7,7 +6,7 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="32583" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" >
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->

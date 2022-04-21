@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UpdateAttendanceComponent } from '../update-attendance/update-attendance.component';
+import { UserDetailsService } from 'src/app/services/user-details.service';
 
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.css']
+  styleUrls: ['./attendance.component.css'],
 })
 export class AttendanceComponent implements OnInit {
-
-  attendanceForm ! : FormGroup;
+  attendanceForm!: FormGroup;
   inventoryDetails: any;
   inventoryId: number;
 
-
-
-  displayedColumns: string[] = [ 'tool_No', 'tool_Name','section', 'epf_No','employee_Name','mark'];
+  displayedColumns: string[] = [
+    'tool_No',
+    'tool_Name',
+    'section',
+    'epf_No',
+    'employee_Name',
+    'mark',
+  ];
   dataSource!: MatTableDataSource<any>;
   static this: any;
 
@@ -28,14 +33,13 @@ export class AttendanceComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   constructor(
-    private api : ApiService,
-    private formBuilder : FormBuilder,
+    private api: ApiService,
+    private formBuilder: FormBuilder,
     private activatedroute: ActivatedRoute,
-    private dialog : MatDialog,
-    ) {
-
+    private dialog: MatDialog,
+    private userDetails: UserDetailsService
+  ) {
     this.inventoryId = parseInt(
       this.activatedroute.snapshot.paramMap.get('id') || ''
     );
@@ -72,47 +76,40 @@ export class AttendanceComponent implements OnInit {
         );
       }
     });
-
-
-   }
+  }
 
   ngOnInit(): void {
-
     // this.attendanceForm = this.formBuilder.group({
     //   attendace: this.formBuilder.array([]),
     // });
 
-    this.attendanceForm= this.formBuilder.group({
-      epf_No : ['',Validators.required],
-      employee_Name : ['',Validators.required],
-      section : ['',Validators.required],
-      tool_Name : ['',Validators.required],
-      tool_No : ['',Validators.required],
-
-    })
+    this.attendanceForm = this.formBuilder.group({
+      epf_No: ['', Validators.required],
+      employee_Name: ['', Validators.required],
+      section: ['', Validators.required],
+      tool_Name: ['', Validators.required],
+      tool_No: ['', Validators.required],
+    });
     this.getAllInventory();
-
   }
 
-  markattendence(element : any) {
+  markattendence(element: any) {
     this.dialog.open(UpdateAttendanceComponent, {
-      width:'30%',
-      data:element
+      width: '30%',
+      data: element,
     });
   }
 
-  getAllInventory(){
-    this.api.getInventory()
-    .subscribe({
-      next:(res)=>{
-
+  async getAllInventory() {
+    const userRole = await this.userDetails.getUserRole()
+    this.api.getInventory(userRole).subscribe({
+      next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         console.log(res);
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-
-      }
-    })
+      },
+    });
   }
 }

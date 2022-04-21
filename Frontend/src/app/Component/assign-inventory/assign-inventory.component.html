@@ -1,7 +1,6 @@
-<app-header></app-header>
 <mat-card class="card">
 
-  <h1 class="mat-display-1 title">Assign Inventory</h1>
+  <h1 class="mat-display-1 title">Assign Inventory Bundling</h1>
 
     <form class="example-form" [formGroup]="inventoryForm" >
       <mat-form-field appearance="outline" class="input_field">
@@ -36,6 +35,10 @@
         <mat-select formControlName = "section" >
           <mat-option value="Bundling">Bundling</mat-option>
           <mat-option value="Lace">Lace</mat-option>
+          <mat-option value="Molding">Molding</mat-option>
+          <mat-option value="Laying">Laying</mat-option>
+          <mat-option value="Binding">Binding</mat-option>
+          <mat-option value="QAD">QAD</mat-option>
         </mat-select>
       </mat-form-field>
 

@@ -5,6 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeedModule } from './feed/feed.module';
 import { TimeInModule } from './time-in/time-in.module';
+import { LaceModule } from './lace/lace.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { TimeInModule } from './time-in/time-in.module';
     }),
     FeedModule,
     TimeInModule,
+    LaceModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,46 +1,77 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElement {
-  position: number;
-  toolNo: string;
-  toolName: string;
-  epfNo: string;
-  empName: string;
-  section: string;
-  timeIn: any;
-
-}
+import { Component, OnInit,ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from 'src/app/services/api.service';
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, toolNo: 'BSC - 01', toolName: 'Scissor', epfNo: '31582', empName:'Dilan Perera', section:'Bundling',timeIn:'07:30 AM'},
-  {position: 2, toolNo: 'BSC - 02', toolName: 'Scissor', epfNo: '31583', empName:'Maleesha Withanage',section:'Bundling',timeIn:'07:30 AM' },
-  {position: 3, toolNo: 'BSC - 03', toolName: 'Scissor', epfNo: '31584', empName:'Nishie Fernando',section:'Bundling',timeIn:'07:30 AM' },
-];
 
 @Component({
   selector: 'app-inventory-in-time',
   templateUrl: './inventory-in-time.component.html',
-  styleUrls: ['./inventory-in-time.component.css']
+  styleUrls: ['./inventory-in-time.component.css'],
 })
 export class InventoryInTimeComponent implements OnInit {
-
-
   displayedRows: string[] = ['shift'];
-  displayedColumns: string[] = ['position', 'toolNo', 'toolName', 'epfNo','empName','section','timeIn'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = [
+    'no',
+    'tool_No',
+    'epf_No',
+    'employee_Name',
+    'section',
+    'inv_in',
+
+  ];
+  dataSource!: MatTableDataSource<any>;
+  static this: any;
+
+  shift:any;
+
+
+  tableFilter:String = "all";
+
+
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  constructor(private api: ApiService,) {
+    this.shift = this.displayedRows[this.shift]
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-
-
-
-  constructor() { }
 
   ngOnInit(): void {
-  }
 
+    this.getAllAttendance();
+
+  }
+  getAllAttendance() {
+    this.api.getattendance().subscribe({
+      next: (res) => {
+
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }
+
+

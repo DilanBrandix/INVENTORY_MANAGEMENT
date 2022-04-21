@@ -27,6 +27,7 @@ export class UpdateAttendanceComponent implements OnInit {
       date: ['', Validators.required],
       inv_in: ['', Validators.required],
       shift: ['', Validators.required],
+      section: ['', Validators.required],
     });
     if (this.markattendance) {
 
@@ -47,6 +48,9 @@ export class UpdateAttendanceComponent implements OnInit {
 
                   this.attendanceForm.controls['shift'].setValue(
                     this.markattendance.shift);
+
+                    this.attendanceForm.controls['section'].setValue(
+                      this.markattendance.section);
       }
   }
 

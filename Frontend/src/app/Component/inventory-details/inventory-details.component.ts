@@ -3,13 +3,14 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
-import { UpdateAssignedInventoryComponent } from '../update-assigned-inventory/update-assigned-inventory.component';
 import { Router } from '@angular/router';
+import { UserDetailsService } from 'src/app/services/user-details.service';
 
 @Component({
   selector: 'app-inventory-details',
   templateUrl: './inventory-details.component.html',
   styleUrls: ['./inventory-details.component.css'],
+
 })
 export class InventoryDetailsComponent implements OnInit {
   displayedColumns: string[] = [
@@ -33,7 +34,7 @@ export class InventoryDetailsComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private api: ApiService, private router: Router) {}
+  constructor(private api: ApiService, private router: Router,private userDetails:UserDetailsService) {}
 
   updateInventory(row: any) {
     //console.log(row)
@@ -52,8 +53,9 @@ export class InventoryDetailsComponent implements OnInit {
     this.getAllInventory();
   }
 
-  getAllInventory() {
-    this.api.getInventory().subscribe({
+  async getAllInventory() {
+    const userRole = await this.userDetails.getUserRole()
+    this.api.getInventory(userRole).subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;

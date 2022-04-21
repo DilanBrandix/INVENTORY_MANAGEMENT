@@ -12,9 +12,9 @@ export class FeedController {
   create(@Body() FeedPost: FeedPost): Observable<FeedPost> {
     return this.feedService.createPost(FeedPost);
   }
-  @Get()
-  findAll(): Observable<FeedPost[]> {
-    return this.feedService.findAllPost();
+  @Get('/:userRole')
+  findAll(@Param('userRole') userRole: string): Observable<FeedPost[]> {
+    return this.feedService.findAllPost(userRole);
   }
 
   @Get('inventory/:id')

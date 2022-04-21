@@ -15,8 +15,8 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}/feed`,data);
   }
 
-  getInventory(){
-    return this.http.get<any>(`${this.apiUrl}/feed`);
+  getInventory(userRole:any){
+    return this.http.get<any>(`${this.apiUrl}/feed/${userRole}`);
   }
 
   postAttendance(data : any){
@@ -29,5 +29,8 @@ export class ApiService {
 
   putInventory(data : any){
     return this.http.put<any>(`${this.apiUrl}/feed`,data);
+  }
+  getattendance(){
+    return this.http.get<any>(`${this.apiUrl}/time-in`);
   }
 }

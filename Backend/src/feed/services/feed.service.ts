@@ -19,8 +19,12 @@ export class FeedService {
     return this.feedPostRepository.findOne(id);
   }
 
-  findAllPost(): Observable<FeedPost[]> {
-    return from(this.feedPostRepository.find());
+  findAllPost(userRole: string): Observable<FeedPost[]> {
+    if (userRole === 'admin') {
+      return from(this.feedPostRepository.find());
+    } else {
+      return from(this.feedPostRepository.find({ section: userRole }));
+    }
   }
 
   updatePost(feedPost: FeedPost): Promise<any> {

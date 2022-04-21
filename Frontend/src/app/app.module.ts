@@ -16,6 +16,15 @@ import { UpdateAssignedInventoryComponent } from './Component/update-assigned-in
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateAttendanceComponent } from './Component/update-attendance/update-attendance.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { AssignInventoryLaceComponent } from './Component/assign-inventory-lace/assign-inventory-lace.component';
+import { AssignInventoryMoldingComponent } from './Component/assign-inventory-molding/assign-inventory-molding.component';
+import { AssignInventoryLayingComponent } from './Component/assign-inventory-laying/assign-inventory-laying.component';
+import { AssignInventoryBindingComponent } from './Component/assign-inventory-binding/assign-inventory-binding.component';
+import { AssignInventoryQadComponent } from './Component/assign-inventory-qad/assign-inventory-qad.component';
 
 
 @NgModule({
@@ -29,7 +38,12 @@ import { UpdateAttendanceComponent } from './Component/update-attendance/update-
     LoginComponent,
     AttendanceComponent,
     UpdateAssignedInventoryComponent,
-    UpdateAttendanceComponent
+    UpdateAttendanceComponent,
+    AssignInventoryLaceComponent,
+    AssignInventoryMoldingComponent,
+    AssignInventoryLayingComponent,
+    AssignInventoryBindingComponent,
+    AssignInventoryQadComponent
 
   ],
   imports: [
@@ -41,7 +55,11 @@ import { UpdateAttendanceComponent } from './Component/update-attendance/update-
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableExporterModule,
+    MatTableModule,
+    MatSelectModule,
+    MatFormFieldModule
 
   ],
   providers: [],

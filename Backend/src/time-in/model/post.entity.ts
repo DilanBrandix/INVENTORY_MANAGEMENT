@@ -9,6 +9,9 @@ export class TimeInPostEntity {
   tool_No: string;
 
   @Column({ default: '' })
+  section: string;
+
+  @Column({ default: '' })
   epf_No: string;
 
   @Column({ default: '' })

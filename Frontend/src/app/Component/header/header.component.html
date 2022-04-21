@@ -8,11 +8,59 @@
     <span class="span5">Inventory In Time</span>
   </div> -->
   <div class="example-button-row">
-    <a mat-button routerLink="/attendance" class="span1">Attendance</a>
-    <a mat-button routerLink="/inventory_assign" class="span2">Assign Inventory</a>
-    <a mat-button routerLink="/inventory_details" class="span3">Inventory Details</a>
-    <a mat-button routerLink="/inventory_out" class="span4">Inventory out Time</a>
-    <a mat-button routerLink="/inventory_in" class="span5">Inventory In Time</a>
+    <!-- <button mat-button [matMenuTriggerFor]="assign_Inventory">Assign Inventory</button>
+<mat-menu #assign_Inventory="matMenu">
+  <button mat-menu-item routerLink="/inventory_assign" >Bundling</button>
+  <button mat-menu-item routerLink="/inventory_assign_lace">Lace</button>
+  <button mat-menu-item routerLink="/inventory_assign_molding">Molding</button>
+  <button mat-menu-item routerLink="/inventory_assign_laying">Laying and Cutting</button>
+  <button mat-menu-item routerLink="/inventory_assign_binding"> Binding</button>
+  <button mat-menu-item routerLink="/inventory_assign_qad">QAD</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="attendance">Attendance</button>
+<mat-menu #attendance="matMenu">
+  <button mat-menu-item routerLink="/attendance" >Bundling</button>
+  <button mat-menu-item>Lace</button>
+  <button mat-menu-item>Molding</button>
+  <button mat-menu-item>Laying and Cutting</button>
+  <button mat-menu-item>Binding</button>
+  <button mat-menu-item>QAD</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="inventory_Details">Inventory Details</button>
+<mat-menu #inventory_Details="matMenu">
+  <button mat-menu-item routerLink="/inventory_details" >Bundling</button>
+  <button mat-menu-item>Lace</button>
+  <button mat-menu-item>Molding</button>
+  <button mat-menu-item>Laying and Cutting</button>
+  <button mat-menu-item>Binding</button>
+  <button mat-menu-item>QAD</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="inventory_In_Time">Inventory In Time</button>
+<mat-menu #inventory_In_Time="matMenu">
+  <button mat-menu-item routerLink="/inventory_in" >Bundling</button>
+  <button mat-menu-item>Lace</button>
+  <button mat-menu-item>Molding</button>
+  <button mat-menu-item>Laying and Cutting</button>
+  <button mat-menu-item>Binding</button>
+  <button mat-menu-item>QAD</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="inventory_Out_Time">Inventory Out Time</button>
+<mat-menu #inventory_Out_Time="matMenu">
+  <button mat-menu-item routerLink="/inventory_out" >Bundling</button>
+  <button mat-menu-item>Lace</button>
+  <button mat-menu-item>Molding</button>
+  <button mat-menu-item>Laying and Cutting</button>
+  <button mat-menu-item>Binding</button>
+  <button mat-menu-item>QAD</button>
+</mat-menu> -->
+    <a mat-button routerLink="/attendance" *ngIf="!userDetails.getAdmin()" class="span1">Attendance</a>
+    <a mat-button routerLink="/inventory_assign" *ngIf="userDetails.getAdmin()" class="span2">Assign Inventory</a>
+    <a mat-button routerLink="/inventory_details" *ngIf="userDetails.getAdmin()" class="span3">Inventory Details</a>
+    <a mat-button routerLink="/inventory_in" class="span5">Inventory Time</a>
   </div>
-  <a mat-button routerLink="/" class="span7">Logout</a>
+  <a mat-button (click)="logOut()" class="span7">Logout</a>
 </mat-toolbar>

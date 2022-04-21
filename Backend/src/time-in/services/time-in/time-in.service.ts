@@ -14,4 +14,7 @@ export class TimeInService {
   createPost(timeinPost: TimeInPost): Observable<TimeInPost> {
     return from(this.timeinPostRepository.save(timeinPost));
   }
+  findAllPost(): Observable<TimeInPost[]> {
+    return from(this.timeinPostRepository.find());
+  }
 }
