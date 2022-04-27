@@ -60,7 +60,7 @@
     <a mat-button routerLink="/attendance" *ngIf="!userDetails.getAdmin()" class="span1">Attendance</a>
     <a mat-button routerLink="/inventory_assign" *ngIf="userDetails.getAdmin()" class="span2">Assign Inventory</a>
     <a mat-button routerLink="/inventory_details" *ngIf="userDetails.getAdmin()" class="span3">Inventory Details</a>
-    <a mat-button routerLink="/inventory_in" class="span5">Inventory Time</a>
+    <a mat-button routerLink="/inventory_time_general" class="span5">Inventory Time</a>
   </div>
   <a mat-button (click)="logOut()" class="span7">Logout</a>
 </mat-toolbar>

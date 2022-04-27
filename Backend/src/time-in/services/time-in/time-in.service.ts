@@ -24,12 +24,15 @@ export class TimeInService {
     if (userRole === 'admin') {
       return from(this.timeinPostRepository.find());
     } else {
-      return from(this.timeinPostRepository.find({ section: userRole }));
+      roles: return from(this.timeinPostRepository.find({ section: userRole }));
       // return from(this.timeinPostRepository.find({ section: userRole }));
     }
     // if (userRole !== 'admin') {
-    //   roles.map(item =>{
-
-    //   }
+    //   const a = roles.array.map(item  => {
+    //     if (item.shift === 'General') {
+    //       general.push(item);
+    //     }
+    //   });
+    // }
   }
 }

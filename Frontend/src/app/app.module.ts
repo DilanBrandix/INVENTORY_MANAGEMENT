@@ -23,8 +23,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AssignInventoryLaceComponent } from './Component/assign-inventory-lace/assign-inventory-lace.component';
 import { AssignInventoryMoldingComponent } from './Component/assign-inventory-molding/assign-inventory-molding.component';
 import { AssignInventoryLayingComponent } from './Component/assign-inventory-laying/assign-inventory-laying.component';
-import { AssignInventoryBindingComponent } from './Component/assign-inventory-binding/assign-inventory-binding.component';
 import { AssignInventoryQadComponent } from './Component/assign-inventory-qad/assign-inventory-qad.component';
+import { InventoryTimeGeneralComponent } from './Component/inventory-time-general/inventory-time-general.component';
 
 
 @NgModule({
@@ -42,8 +42,8 @@ import { AssignInventoryQadComponent } from './Component/assign-inventory-qad/as
     AssignInventoryLaceComponent,
     AssignInventoryMoldingComponent,
     AssignInventoryLayingComponent,
-    AssignInventoryBindingComponent,
-    AssignInventoryQadComponent
+    AssignInventoryQadComponent,
+    InventoryTimeGeneralComponent
 
   ],
   imports: [

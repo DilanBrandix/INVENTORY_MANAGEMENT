@@ -10,9 +10,9 @@ import { UpdateAssignedInventoryComponent } from './Component/update-assigned-in
 import { AssignInventoryLaceComponent } from './Component/assign-inventory-lace/assign-inventory-lace.component';
 import { AssignInventoryMoldingComponent } from './Component/assign-inventory-molding/assign-inventory-molding.component';
 import { AssignInventoryLayingComponent } from './Component/assign-inventory-laying/assign-inventory-laying.component';
-import { AssignInventoryBindingComponent } from './Component/assign-inventory-binding/assign-inventory-binding.component';
 import { AssignInventoryQadComponent } from './Component/assign-inventory-qad/assign-inventory-qad.component';
 import { AuthGuard } from './Component/authentication/authentication';
+import { InventoryTimeGeneralComponent } from './Component/inventory-time-general/inventory-time-general.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,11 +31,10 @@ const routes: Routes = [
     path: 'inventory_assign_laying',
     component: AssignInventoryLayingComponent, canActivate: [AuthGuard]
   },
-  {
-    path: 'inventory_assign_binding',
-    component: AssignInventoryBindingComponent, canActivate: [AuthGuard] ,
-  },
+
   { path: 'inventory_assign_qad', component: AssignInventoryQadComponent, canActivate: [AuthGuard]  },
+
+  { path: 'inventory_time_general', component: InventoryTimeGeneralComponent, canActivate: [AuthGuard]  },
 ];
 
 @NgModule({
