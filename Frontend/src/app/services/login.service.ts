@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class LoginService {
+  production= true;
   private apiUrl = `${environment.api}`;
 
   constructor(private http: HttpClient, private router: Router) {}
