@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-title>Inventory Time</mat-card-title>
-  <!-- <button mat-raised-button color="primary" class="button">
+  <button mat-raised-button color="primary" (click)="exporter.exportTable('xlsx', {fileName:'Inventory_Time'})" class="button">
     Generate Report
-  </button> -->
+  </button>
   <mat-grid-list cols="3" rowHeight="100px" class="gridlist">
     <mat-grid-tile>
       <mat-form-field appearance="outline" class="search">
@@ -60,7 +60,7 @@
   </mat-grid-list>
 
   <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource"  matTableExporter #exporter="matTableExporter" [hiddenColumns]="[0]" matSort>
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 

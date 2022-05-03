@@ -1,0 +1,15 @@
+version: '3.0' # specify docker-compose version
+services:
+    frontend:
+        image: inventory-management-client
+        restart: always
+        ports:
+            - "4200:4200"
+        depends_on:
+            - backend
+
+    backend:
+        image: inventory-management-server
+        restart: always
+        ports:
+            - "3000:3000"
