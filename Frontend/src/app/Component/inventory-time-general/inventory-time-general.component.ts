@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
 import { UserDetailsService } from 'src/app/services/user-details.service';
 import { DatePipe } from '@angular/common';
+import { map } from 'rxjs/operators';
 
 
 
@@ -73,6 +74,10 @@ export class InventoryTimeGeneralComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  searchByDate(date:any){
+
+    this.dataSource.filter = date.trim().toLowerCase();
   }
 
   ngOnInit(): void {
